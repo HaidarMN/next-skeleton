@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Skeleton / Starter Pack
+
+Look at the [Next.js documentaion](https://nextjs.org/) to learn more.
 
 ## Getting Started
 
-First, run the development server:
+**Important Note**: this project use pnpm for package manajer. Make sure to install it first:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm i -g pnpm
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Don't forget to install the package:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+# or
+pnpm i
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Next step is to run the development server on [http://localhost:3000](http://localhost:3000):
 
-## Learn More
+```bash
+pnpm run dev
+# or
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Packages List
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Axios](https://axios-http.com/) for HTTP request
+- [Tailwind](https://tailwindcss.com/) for CSS framework
+- [Zustand](https://zustand-demo.pmnd.rs/) for state management
+- [React Icons](https://react-icons.github.io/react-icons/) for icons
+- [React Hook Form](https://react-hook-form.com/) for validation form
+- [Yup](https://www.npmjs.com/package/yup) for validation schema
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## How To Use A Component
 
-## Deploy on Vercel
+### Text Input
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+import InputText from "@/components/global/input/Text"; // Component
+import { MdOutlineEmail } from "react-icons/md"; // Icons
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<InputText
+  name="username"
+  icon={<MdOutlineEmail />}
+  label="Username"
+  placeholder="Enter your username"
+  primary
+/>
+```
+
+### Props
+
+| Props       |            Type |
+| :---------- | --------------: |
+| name        |          String |
+| label       |          String |
+| placeholder |          String |
+| icon        |       Component |
+| error       |          String |
+| primary     |         Boolean |
+| disabled    |         Boolean |
+| register    | React Hook Form |
+| passValue   |   any(function) |
+
+**NB**: Props name is a required props
