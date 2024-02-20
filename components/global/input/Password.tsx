@@ -10,7 +10,7 @@ type props = {
   error?: string;
   primary?: boolean | false;
   disabled?: boolean | false;
-  register: UseFormRegister<FieldValues>;
+  register?: UseFormRegister<FieldValues>;
   passValue?: any; // for pass value to parent
 };
 
@@ -68,7 +68,8 @@ const InputPassword = ({
           <input
             type={currentType}
             id={name}
-            {...register(name)}
+            {...(register && register(name))}
+            name={name}
             placeholder={placeholder}
             className={`h-10 w-full border border-x-0 p-2 pr-0 focus:outline-none ${inputClass(
               disabled,

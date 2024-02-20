@@ -3,6 +3,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import AuthLayout from "@/layouts/AuthLayout";
 
+// Stores
+import { useAuthStore } from "@/stores/auth";
+import { useLayoutStore } from "@/stores/layout";
+
 // Icons
 import { MdOutlineEmail } from "react-icons/md";
 
@@ -30,14 +34,19 @@ const Login = () => {
   });
 
   // Variabel
+  const { user, setAuth: setAuth } = useAuthStore();
+  const { setIsLoading: setIsLoading } = useLayoutStore();
 
   // Funtion
   const submitData = async (data: object) => {
     try {
-      const response = api.post("/auth/login", data);
-      console.log((await response).data);
+      setIsLoading(true);
+      const response = await api.post("/auth/login", data);
+      setAuth(response.data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 

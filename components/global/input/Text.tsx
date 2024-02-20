@@ -9,7 +9,7 @@ type props = {
   error?: string;
   primary?: boolean | false;
   disabled?: boolean | false;
-  register: UseFormRegister<FieldValues>;
+  register?: UseFormRegister<FieldValues>;
   passValue?: any; // for pass value to parent
 };
 
@@ -62,7 +62,8 @@ const InputText = ({
         <input
           type="text"
           id={name}
-          {...register(name)}
+          {...(register && register(name))}
+          name={name}
           placeholder={placeholder}
           className={`h-10 w-full border p-2 focus:outline-none ${inputClass(
             icon,

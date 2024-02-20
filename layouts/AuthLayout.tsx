@@ -11,7 +11,7 @@ const AuthLayout = ({ title, children }: props) => {
   const { publicRuntimeConfig } = getConfig();
 
   return (
-    <div className="bg-slate-950 h-screen text-slate-950 flex flex-col items-center justify-center">
+    <div className="flex h-screen flex-col items-center justify-center overflow-hidden bg-slate-950 text-slate-950">
       <Head>
         <title>{`${title} - ${publicRuntimeConfig.APP_TITLE}`}</title>
       </Head>
