@@ -4,10 +4,10 @@ Look at the [Next.js documentaion](https://nextjs.org/) to learn more.
 
 ## Getting Started
 
-**Important Note**: this project use pnpm for package manajer. Make sure to install it first:
+**Important Note**: this project use pnpm for package manager. Make sure to install it first:
 
 ```bash
-npm i -g pnpm
+npm install -g pnpm
 ```
 
 Don't forget to install the package:
@@ -54,16 +54,16 @@ import { MdOutlineEmail } from "react-icons/md"; // Icons
 
 ### Props
 
-| Props       |            Type |
+| Props       | Type            |
 | :---------- | :-------------- |
-| name        |          String |
-| label       |          String |
-| placeholder |          String |
-| icon        |       Component |
-| error       |          String |
-| primary     |         Boolean |
-| disabled    |         Boolean |
+| name        | String          |
+| label       | String          |
+| placeholder | String          |
+| icon        | Component       |
+| error       | String          |
+| primary     | Boolean         |
+| disabled    | Boolean         |
 | register    | React Hook Form |
-| passValue   |   any(function) |
+| passValue   | any(function)   |
 
 **NB**: Props "name" is a required props
