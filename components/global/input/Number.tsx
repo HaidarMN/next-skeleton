@@ -31,7 +31,7 @@ const iconClass = (error: string | undefined) => {
     : "border-slate-950 bg-gray-100 text-slate-950";
 };
 
-const InputText = ({
+const InputNumber = ({
   name,
   label,
   placeholder,
@@ -62,12 +62,12 @@ const InputText = ({
           </div>
         )}
         <input
-          type="text"
+          type="number"
           id={name}
           {...(register && register(name))}
           name={name}
           placeholder={placeholder}
-          className={`h-10 w-full border p-2 focus:outline-none ${inputClass(
+          className={`h-10 w-full border p-2 [appearance:textfield] focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none ${inputClass(
             icon,
             disabled,
             error,
@@ -81,4 +81,4 @@ const InputText = ({
   );
 };
 
-export default InputText;
+export default InputNumber;

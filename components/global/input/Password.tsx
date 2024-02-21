@@ -11,7 +11,7 @@ type props = {
   primary?: boolean | false;
   disabled?: boolean | false;
   register?: UseFormRegister<FieldValues>;
-  passValue?: any; // for pass value to parent
+  passValue?: () => void; // for pass value to parent
 };
 
 const inputClass = (disabled: boolean, error: string | undefined) => {

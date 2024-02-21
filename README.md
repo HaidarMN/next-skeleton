@@ -34,6 +34,7 @@ pnpm dev
 - [React Icons](https://react-icons.github.io/react-icons/) for icons
 - [React Hook Form](https://react-hook-form.com/) for validation form
 - [Yup](https://www.npmjs.com/package/yup) for validation schema
+- [Air Datepicker](https://air-datepicker.com/) for datepicker
 
 ## How To Use A Component
 

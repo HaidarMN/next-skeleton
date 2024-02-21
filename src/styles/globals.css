@@ -7,3 +7,7 @@
     @apply overflow-x-auto overflow-y-hidden bg-slate-950;
   }
 }
+
+.react-datepicker-wrapper {
+  width: 100%;
+}

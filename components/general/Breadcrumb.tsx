@@ -21,7 +21,7 @@ const Breadcrumb = () => {
         breadcrumbs.map((val: any, index: number) => {
           if (index + 1 == breadcrumbs.length) {
             return (
-              <span key={index} className="text-sm text-sky-700">
+              <span key={index} className="text-sm text-teal-300">
                 {val.label}
               </span>
             );

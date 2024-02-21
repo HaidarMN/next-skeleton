@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import AirDatepicker from "air-datepicker";
+import "air-datepicker/air-datepicker.css";
+import localeEn from "air-datepicker/locale/en";
 
 type props = {
   name: string;
@@ -11,6 +14,8 @@ type props = {
   disabled?: boolean | false;
   register?: UseFormRegister<FieldValues>;
   passValue?: () => void; // for pass value to parent
+  dateFormat?: string;
+  time?: boolean;
 };
 
 const inputClass = (
@@ -31,7 +36,7 @@ const iconClass = (error: string | undefined) => {
     : "border-slate-950 bg-gray-100 text-slate-950";
 };
 
-const InputText = ({
+const InputDatepicker = ({
   name,
   label,
   placeholder,
@@ -41,7 +46,19 @@ const InputText = ({
   disabled = false,
   register,
   passValue,
+  dateFormat = "dd-MM-yyyy",
+  time = false,
 }: props) => {
+  useEffect(() => {
+    new AirDatepicker(`#${name}`, {
+      locale: localeEn,
+      selectedDates: [new Date()],
+      dateFormat: dateFormat,
+      timepicker: time,
+      timeFormat: "HH:mm",
+    });
+  }, []);
+
   return (
     <div className="flex flex-col items-start gap-1">
       <label
@@ -62,7 +79,6 @@ const InputText = ({
           </div>
         )}
         <input
-          type="text"
           id={name}
           {...(register && register(name))}
           name={name}
@@ -81,4 +97,4 @@ const InputText = ({
   );
 };
 
-export default InputText;
+export default InputDatepicker;

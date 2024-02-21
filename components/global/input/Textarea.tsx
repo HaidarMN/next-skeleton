@@ -5,38 +5,27 @@ type props = {
   name: string;
   label?: string;
   placeholder?: string;
-  icon?: React.ReactNode;
   error?: string;
+  rows?: number;
   primary?: boolean | false;
   disabled?: boolean | false;
   register?: UseFormRegister<FieldValues>;
   passValue?: () => void; // for pass value to parent
 };
 
-const inputClass = (
-  icon: React.ReactNode,
-  disabled: boolean,
-  error: string | undefined,
-) => {
-  const iconClass = icon ? "rounded-r border-l-0" : "rounded";
+const inputClass = (disabled: boolean, error: string | undefined) => {
   const disabledClass = disabled ? "cursor-not-allowed bg-gray-300" : "";
   const errorClass = error ? "border-red-600" : "border-slate-950";
 
-  return `${iconClass} ${disabledClass} ${errorClass}`;
+  return `${disabledClass} ${errorClass}`;
 };
 
-const iconClass = (error: string | undefined) => {
-  return error
-    ? "border-red-600 bg-red-600 text-white"
-    : "border-slate-950 bg-gray-100 text-slate-950";
-};
-
-const InputText = ({
+const InputTextarea = ({
   name,
   label,
   placeholder,
-  icon,
   error,
+  rows = 3,
   primary = false,
   disabled = false,
   register,
@@ -52,33 +41,23 @@ const InputText = ({
         {primary && <strong className="text-red-600">*</strong>}
       </label>
       <div className="flex w-full flex-row items-center">
-        {icon && (
-          <div
-            className={`flex h-10 items-center justify-center rounded-l border px-3 py-2 ${iconClass(
-              error,
-            )}`}
-          >
-            {icon}
-          </div>
-        )}
-        <input
-          type="text"
+        <textarea
           id={name}
           {...(register && register(name))}
           name={name}
           placeholder={placeholder}
-          className={`h-10 w-full border p-2 focus:outline-none ${inputClass(
-            icon,
+          className={`h-full w-full rounded border p-2 focus:outline-none ${inputClass(
             disabled,
             error,
           )}`}
+          rows={rows}
           disabled={disabled}
           onChange={passValue}
-        />
+        ></textarea>
       </div>
       {error && <span className="text-sm text-red-600">{error}</span>}
     </div>
   );
 };
 
-export default InputText;
+export default InputTextarea;
