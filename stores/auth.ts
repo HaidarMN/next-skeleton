@@ -4,6 +4,7 @@ type AuthStore = {
   user: object;
   token: string | null;
   setAuth: (val: {}) => void;
+  removeAuth: () => void;
 };
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -23,6 +24,15 @@ export const useAuthStore = create<AuthStore>((set) => ({
     set(() => ({
       user: val,
       token: val.token,
+    }));
+  },
+  removeAuth: () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+
+    set(() => ({
+      user: {},
+      token: "",
     }));
   },
 }));

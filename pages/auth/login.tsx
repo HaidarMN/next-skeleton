@@ -14,6 +14,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import InputText from "@/components/global/input/Text";
 import InputPassword from "@/components/global/input/Password";
 import api from "@/src/api/axios";
+import { useRouter } from "next/router";
 
 const validationSchema = yup.object({
   username: yup.string().required().label("Username"),
@@ -34,7 +35,8 @@ const Login = () => {
   });
 
   // Variabel
-  const { user, setAuth: setAuth } = useAuthStore();
+  const router = useRouter();
+  const { setAuth: setAuth } = useAuthStore();
   const { setIsLoading: setIsLoading } = useLayoutStore();
 
   // Funtion
@@ -42,7 +44,10 @@ const Login = () => {
     try {
       setIsLoading(true);
       const response = await api.post("/auth/login", data);
-      setAuth(response.data);
+      if (response.status === 200) {
+        setAuth(response.data);
+        router.push("/");
+      }
     } catch (error) {
       console.error(error);
     } finally {

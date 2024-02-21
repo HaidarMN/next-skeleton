@@ -1,5 +1,6 @@
 import axios from "axios";
 import getConfig from "next/config";
+import { useRouter } from "next/navigation";
 
 const createAxiosInstance = () => {
   const { publicRuntimeConfig } = getConfig();
@@ -25,12 +26,11 @@ const createAxiosInstance = () => {
     (error) => {
       if (error.response.status === 401) {
         console.log("Unathorized");
-        // return redirect("/profil");
-        window.location.href = "/auth/login";
+        useRouter().push("/");
       } else if (error.response.status === 403) {
         localStorage.removeItem("user");
         localStorage.removeItem("token");
-        window.location.href = "/auth/login";
+        useRouter().push("/auth/login");
       }
     },
   );
