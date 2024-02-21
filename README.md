@@ -28,13 +28,13 @@ pnpm dev
 
 ## Packages List
 
-- [Axios](https://axios-http.com/) for HTTP request
-- [Tailwind](https://tailwindcss.com/) for CSS framework
-- [Zustand](https://zustand-demo.pmnd.rs/) for state management
-- [React Icons](https://react-icons.github.io/react-icons/) for icons
-- [React Hook Form](https://react-hook-form.com/) for validation form
-- [Yup](https://www.npmjs.com/package/yup) for validation schema
-- [Air Datepicker](https://air-datepicker.com/) for datepicker
+- :globe_with_meridians: [Axios](https://axios-http.com/) for HTTP request
+- :art: [Tailwind](https://tailwindcss.com/) for CSS framework
+- :open_file_folder: [Zustand](https://zustand-demo.pmnd.rs/) for state management
+- :trollface: [React Icons](https://react-icons.github.io/react-icons/) for icons
+- :memo: [React Hook Form](https://react-hook-form.com/) for validation form
+- :white_check_mark: [Yup](https://www.npmjs.com/package/yup) for validation schema
+- :calendar: [Air Datepicker](https://air-datepicker.com/) for datepicker
 
 ## How To Use A Component
 
