@@ -12,12 +12,14 @@ import InputText from "@/components/global/input/Text";
 import InputNumber from "@/components/global/input/Number";
 import InputTextarea from "@/components/global/input/Textarea";
 import InputDatepicker from "@/components/global/input/Datepicker";
+import InputSelect from "@/components/global/input/Select";
 
 const validationSchema = yup.object({
   text: yup.string().required().label("Text"),
   number: yup.number().required().label("Number"),
   textarea: yup.string().required().label("Textarea"),
   datepicker: yup.string().required().label("Datepicker"),
+  select: yup.string().required().label("Select"),
 });
 
 const InputForm = () => {
@@ -31,12 +33,20 @@ const InputForm = () => {
   const { setIsLoading: setIsLoading, setBreadcrumb: setBreadcrumb } =
     useLayoutStore();
 
+  // Variabel
+  const options_list = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
+
   // Function
-  const submitData = (data: object) => {
+  const submitData = async (data: object) => {
     try {
       setIsLoading(true);
       const stringify_data = JSON.stringify(data);
       alert(stringify_data);
+      console.log(data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -87,6 +97,16 @@ const InputForm = () => {
           primary
           time
         />
+        <InputSelect
+          register={register}
+          name="select"
+          label="Select"
+          placeholder="This is a select input"
+          error={errors.select?.message}
+          option={options_list}
+          primary
+        />
+        <button type="submit">APAPA</button>
       </form>
     </MainLayout>
   );
