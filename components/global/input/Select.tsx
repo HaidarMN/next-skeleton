@@ -1,6 +1,6 @@
 import React from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
-import Select from "react-select";
+import { Controller, FieldValues, UseFormRegister } from "react-hook-form";
+import Select, { components } from "react-select";
 
 type props = {
   name: string;
@@ -10,9 +10,9 @@ type props = {
   error?: string;
   primary?: boolean | false;
   disabled?: boolean | false;
-  register?: UseFormRegister<FieldValues>;
-  passValue?: () => void; // for pass value to parent
+  passValue?: (e: any) => void; // for pass value to parent
   option: Array<object>;
+  control?: any;
 };
 
 const inputClass = (
@@ -41,9 +41,9 @@ const InputSelect = ({
   error,
   primary = false,
   disabled = false,
-  register,
   passValue,
   option,
+  control,
 }: props) => {
   return (
     <div className="flex flex-col items-start gap-1">
@@ -64,19 +64,29 @@ const InputSelect = ({
             {icon}
           </div>
         )}
-        <Select
-          id={name}
-          {...(register && register(name))}
+        <Controller
           name={name}
-          placeholder={placeholder}
-          classNames={{
-            container: () => `w-full h-10`,
-            control: () =>
-              `border !shadow-none ${inputClass(icon, disabled, error)}`,
-          }}
-          isDisabled={disabled}
-          onChange={passValue}
-          options={option}
+          control={control}
+          render={({ field }) => (
+            <Select
+              id={name}
+              placeholder={placeholder}
+              classNames={{
+                container: () => `w-full h-10`,
+                control: () =>
+                  `border !shadow-none ${inputClass(icon, disabled, error)}`,
+              }}
+              isDisabled={disabled}
+              isClearable
+              onChange={(e: any) => {
+                if (typeof passValue === "function") {
+                  passValue(e?.value);
+                }
+                field.onChange(e?.value);
+              }}
+              options={option}
+            />
+          )}
         />
       </div>
       {error && <span className="text-sm text-red-600">{error}</span>}

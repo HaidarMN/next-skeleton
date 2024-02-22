@@ -2,7 +2,7 @@ import MainLayout from "@/layouts/MainLayout";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // Stores
 import { useLayoutStore } from "@/stores/layout";
@@ -24,6 +24,7 @@ const validationSchema = yup.object({
 
 const InputForm = () => {
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -32,6 +33,7 @@ const InputForm = () => {
   });
   const { setIsLoading: setIsLoading, setBreadcrumb: setBreadcrumb } =
     useLayoutStore();
+  const [value, setValue] = useState(null);
 
   // Variabel
   const options_list = [
@@ -60,6 +62,7 @@ const InputForm = () => {
 
   return (
     <MainLayout title="Input Form">
+      {value && <span className="text-white">{value}</span>}
       <form
         onSubmit={handleSubmit(submitData)}
         className="grid grid-cols-2 gap-4 rounded-lg bg-slate-300 p-4"
@@ -98,12 +101,13 @@ const InputForm = () => {
           time
         />
         <InputSelect
-          register={register}
+          control={control}
           name="select"
           label="Select"
           placeholder="This is a select input"
           error={errors.select?.message}
           option={options_list}
+          passValue={(e) => setValue(e)}
           primary
         />
         <button type="submit">APAPA</button>

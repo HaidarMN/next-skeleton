@@ -52,7 +52,6 @@ const InputDatepicker = ({
   useEffect(() => {
     new AirDatepicker(`#${name}`, {
       locale: localeEn,
-      selectedDates: [new Date()],
       dateFormat: dateFormat,
       timepicker: time,
       timeFormat: "HH:mm",
