@@ -11,7 +11,7 @@ type props = {
   primary?: boolean | false;
   disabled?: boolean | false;
   passValue?: (e: any) => void; // for pass value to parent
-  option: Array<object>;
+  options: Array<object>;
   control?: any;
   multi?: boolean;
 };
@@ -25,7 +25,7 @@ const InputSelect = ({
   primary = false,
   disabled = false,
   passValue,
-  option,
+  options,
   control,
   multi = false,
 }: props) => {
@@ -83,8 +83,12 @@ const InputSelect = ({
               fieldProps?.onChange(final_value || null);
             }
           }}
-          value={option.find((val: any) => val.value === fieldProps?.value)}
-          options={option}
+          value={options.find((val: any) =>
+            multi
+              ? fieldProps?.value?.includes(val.value)
+              : val.value === fieldProps?.value,
+          )}
+          options={options}
         />
       </div>
       {error && <span className="text-sm text-red-600">{error}</span>}

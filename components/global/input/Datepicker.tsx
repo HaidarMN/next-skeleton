@@ -84,7 +84,7 @@ const InputDatepicker = ({
           id={name}
           name={name}
           placeholder={placeholder}
-          className={`h-10 w-full border p-2 focus:outline-none ${icon ? "rounded-r border-l-0" : "rounded"} ${disabled ? "cursor-not-allowed bg-gray-300" : null} ${error ? "border-red-600" : "border-slate-950"}`}
+          className={`h-10 w-full border p-2 ${icon ? "rounded-r border-l-0" : "rounded"} ${disabled ? "cursor-not-allowed bg-gray-300" : null} ${error ? "border-red-600 focus:border-red-600" : "border-slate-950 focus:border-slate-950"}`}
           disabled={disabled}
         />
       </div>

@@ -59,7 +59,7 @@ const InputNumber = ({
           {...fieldProps}
           id={name}
           placeholder={placeholder}
-          className={`h-10 w-full border p-2 [appearance:textfield] focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none ${icon ? "rounded-r border-l-0" : "rounded"} ${disabled ? "cursor-not-allowed bg-gray-300" : null} ${error ? "border-red-600" : "border-slate-950"}`}
+          className={`h-10 w-full border p-2 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none ${icon ? "rounded-r border-l-0" : "rounded"} ${disabled ? "cursor-not-allowed bg-gray-300" : null} ${error ? "border-red-600 focus:border-red-600" : "border-slate-950 focus:border-slate-950"}`}
           disabled={disabled}
           onChange={(e: any) => {
             if (typeof passValue === "function") {

@@ -80,7 +80,7 @@ const InputPassword = ({
           />
           <div
             onClick={togglePassword}
-            className={`flex h-10 cursor-pointer items-center rounded-r border border-l-0 bg-[#FFF] px-2 text-gray-500 ${error ? "border-red-600" : "border-slate-950"}`}
+            className={`flex h-10 cursor-pointer items-center rounded-r border border-l-0 bg-[#FFF] px-2 text-gray-500 ${error ? "border-red-600 focus:border-red-600" : "border-slate-950 focus:border-slate-950"}`}
           >
             {currentType == "password" ? <IoEye /> : <IoEyeOff />}
           </div>

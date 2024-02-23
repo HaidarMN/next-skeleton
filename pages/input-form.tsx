@@ -13,6 +13,7 @@ import InputNumber from "@/components/global/input/Number";
 import InputTextarea from "@/components/global/input/Textarea";
 import InputDatepicker from "@/components/global/input/Datepicker";
 import InputSelect from "@/components/global/input/Select";
+import InputRadio from "@/components/global/input/Radio";
 
 const validationSchema = yup.object({
   text: yup.string().required().label("Text"),
@@ -20,6 +21,7 @@ const validationSchema = yup.object({
   textarea: yup.string().required().label("Textarea"),
   datepicker: yup.string().required().label("Datepicker"),
   select: yup.array().required().label("Select"),
+  radio: yup.string().required().label("Radio"),
 });
 
 const InputForm = () => {
@@ -33,7 +35,8 @@ const InputForm = () => {
       number: 123,
       textarea: "textarea",
       datepicker: "02-07-2024 11:26",
-      // select: ["vanilla"],
+      select: ["strawberry"],
+      // radio: "vanilla",
     },
     resolver: yupResolver(validationSchema),
   });
@@ -113,8 +116,16 @@ const InputForm = () => {
           label="Select"
           placeholder="This is a select input"
           error={errors.select?.message}
-          option={options_list}
+          options={options_list}
           multi
+          primary
+        />
+        <InputRadio
+          control={control}
+          name="radio"
+          label="Radio"
+          options={options_list}
+          error={errors.radio?.message}
           primary
         />
         <button type="submit">APAPA</button>

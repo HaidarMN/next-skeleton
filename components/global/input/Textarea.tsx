@@ -47,7 +47,7 @@ const InputTextarea = ({
           {...fieldProps}
           id={name}
           placeholder={placeholder}
-          className={`h-full w-full rounded border p-2 focus:outline-none ${disabled ? "cursor-not-allowed bg-gray-300" : null} ${error ? "border-red-600" : "border-slate-950"}`}
+          className={`h-full w-full rounded border p-2 ${disabled ? "cursor-not-allowed bg-gray-300" : null} ${error ? "border-red-600 focus:border-red-600" : "border-slate-950 focus:border-slate-950"}`}
           rows={rows}
           disabled={disabled}
           onChange={(e: any) => {

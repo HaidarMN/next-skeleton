@@ -6,6 +6,10 @@
   body {
     @apply overflow-x-auto overflow-y-hidden bg-slate-950;
   }
+
+  input {
+    @apply focus:!outline-0 focus:!ring-0;
+  }
 }
 
 .react-datepicker-wrapper {
