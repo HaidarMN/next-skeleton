@@ -35,6 +35,7 @@ pnpm dev
 - :memo: [React Hook Form](https://react-hook-form.com/) for validation form
 - :white_check_mark: [Yup](https://www.npmjs.com/package/yup) for validation schema
 - :calendar: [Air Datepicker](https://air-datepicker.com/) for datepicker
+- :spiral_notepad: [React Select](https://react-select.com/home) for input select
 
 ## How To Use A Component
 

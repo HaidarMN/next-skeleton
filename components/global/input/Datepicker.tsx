@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { useController } from "react-hook-form";
 import AirDatepicker from "air-datepicker";
 import "air-datepicker/air-datepicker.css";
 import localeEn from "air-datepicker/locale/en";
@@ -12,28 +12,10 @@ type props = {
   error?: string;
   primary?: boolean | false;
   disabled?: boolean | false;
-  register?: UseFormRegister<FieldValues>;
-  passValue?: () => void; // for pass value to parent
+  control?: any;
+  passValue?: (e: any) => void; // for pass value to parent
   dateFormat?: string;
   time?: boolean;
-};
-
-const inputClass = (
-  icon: React.ReactNode,
-  disabled: boolean,
-  error: string | undefined,
-) => {
-  const iconClass = icon ? "rounded-r border-l-0" : "rounded";
-  const disabledClass = disabled ? "cursor-not-allowed bg-gray-300" : "";
-  const errorClass = error ? "border-red-600" : "border-slate-950";
-
-  return `${iconClass} ${disabledClass} ${errorClass}`;
-};
-
-const iconClass = (error: string | undefined) => {
-  return error
-    ? "border-red-600 bg-red-600 text-white"
-    : "border-slate-950 bg-gray-100 text-slate-950";
 };
 
 const InputDatepicker = ({
@@ -44,17 +26,35 @@ const InputDatepicker = ({
   error,
   primary = false,
   disabled = false,
-  register,
+  control,
   passValue,
   dateFormat = "dd-MM-yyyy",
   time = false,
 }: props) => {
+  var fieldProps = {} as any;
+  if (control) {
+    const { field } = useController({
+      name,
+      control,
+    });
+    fieldProps = { ...field };
+  }
+
   useEffect(() => {
     new AirDatepicker(`#${name}`, {
       locale: localeEn,
       dateFormat: dateFormat,
       timepicker: time,
       timeFormat: "HH:mm",
+      autoClose: true,
+      onSelect({ date, formattedDate }) {
+        if (typeof passValue === "function") {
+          passValue(formattedDate);
+        }
+        if (control) {
+          fieldProps?.onChange(formattedDate || null);
+        }
+      },
     });
   }, []);
 
@@ -70,25 +70,22 @@ const InputDatepicker = ({
       <div className="flex w-full flex-row items-center">
         {icon && (
           <div
-            className={`flex h-10 items-center justify-center rounded-l border px-3 py-2 ${iconClass(
-              error,
-            )}`}
+            className={`flex h-10 items-center justify-center rounded-l border px-3 py-2 ${
+              error
+                ? "border-red-600 bg-red-600 text-white"
+                : "border-slate-950 bg-gray-100 text-slate-950"
+            }`}
           >
             {icon}
           </div>
         )}
         <input
+          {...fieldProps}
           id={name}
-          {...(register && register(name))}
           name={name}
           placeholder={placeholder}
-          className={`h-10 w-full border p-2 focus:outline-none ${inputClass(
-            icon,
-            disabled,
-            error,
-          )}`}
+          className={`h-10 w-full border p-2 focus:outline-none ${icon ? "rounded-r border-l-0" : "rounded"} ${disabled ? "cursor-not-allowed bg-gray-300" : null} ${error ? "border-red-600" : "border-slate-950"}`}
           disabled={disabled}
-          onChange={passValue}
         />
       </div>
       {error && <span className="text-sm text-red-600">{error}</span>}

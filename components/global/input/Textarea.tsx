@@ -1,5 +1,5 @@
 import React from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { useController } from "react-hook-form";
 
 type props = {
   name: string;
@@ -9,15 +9,8 @@ type props = {
   rows?: number;
   primary?: boolean | false;
   disabled?: boolean | false;
-  register?: UseFormRegister<FieldValues>;
-  passValue?: () => void; // for pass value to parent
-};
-
-const inputClass = (disabled: boolean, error: string | undefined) => {
-  const disabledClass = disabled ? "cursor-not-allowed bg-gray-300" : "";
-  const errorClass = error ? "border-red-600" : "border-slate-950";
-
-  return `${disabledClass} ${errorClass}`;
+  control?: any;
+  passValue?: (e: any) => void; // for pass value to parent
 };
 
 const InputTextarea = ({
@@ -28,9 +21,18 @@ const InputTextarea = ({
   rows = 3,
   primary = false,
   disabled = false,
-  register,
+  control,
   passValue,
 }: props) => {
+  var fieldProps = {} as any;
+  if (control) {
+    const { field } = useController({
+      name,
+      control,
+    });
+    fieldProps = { ...field };
+  }
+
   return (
     <div className="flex flex-col items-start gap-1">
       <label
@@ -42,17 +44,20 @@ const InputTextarea = ({
       </label>
       <div className="flex w-full flex-row items-center">
         <textarea
+          {...fieldProps}
           id={name}
-          {...(register && register(name))}
-          name={name}
           placeholder={placeholder}
-          className={`h-full w-full rounded border p-2 focus:outline-none ${inputClass(
-            disabled,
-            error,
-          )}`}
+          className={`h-full w-full rounded border p-2 focus:outline-none ${disabled ? "cursor-not-allowed bg-gray-300" : null} ${error ? "border-red-600" : "border-slate-950"}`}
           rows={rows}
           disabled={disabled}
-          onChange={passValue}
+          onChange={(e: any) => {
+            if (typeof passValue === "function") {
+              passValue(e?.target?.value);
+            }
+            if (control) {
+              fieldProps?.onChange(e?.target?.value);
+            }
+          }}
         ></textarea>
       </div>
       {error && <span className="text-sm text-red-600">{error}</span>}

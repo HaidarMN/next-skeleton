@@ -15,6 +15,7 @@ import InputText from "@/components/global/input/Text";
 import InputPassword from "@/components/global/input/Password";
 import api from "@/src/api/axios";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const validationSchema = yup.object({
   username: yup.string().required().label("Username"),
@@ -23,7 +24,7 @@ const validationSchema = yup.object({
 
 const Login = () => {
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -38,6 +39,7 @@ const Login = () => {
   const router = useRouter();
   const { setAuth: setAuth } = useAuthStore();
   const { setIsLoading: setIsLoading } = useLayoutStore();
+  const [value, setValue] = useState("");
 
   // Funtion
   const submitData = async (data: object) => {
@@ -59,6 +61,7 @@ const Login = () => {
     <AuthLayout title="Login">
       <div className="flex w-96 flex-col gap-4 rounded-lg bg-slate-300 p-4">
         <h1 className="text-center text-2xl font-bold">Welcome Back</h1>
+        {value && <span>{value}</span>}
         <form
           onSubmit={handleSubmit(submitData)}
           className="flex flex-col gap-4"
@@ -66,7 +69,7 @@ const Login = () => {
           <InputText
             name="username"
             icon={<MdOutlineEmail />}
-            register={register}
+            control={control}
             label="Username"
             placeholder="Enter your username"
             error={errors.username?.message}
@@ -74,10 +77,11 @@ const Login = () => {
           />
           <InputPassword
             name="password"
-            register={register}
+            control={control}
             label="Password"
             placeholder="Enter your password"
             error={errors.password?.message}
+            passValue={(e) => setValue(e)}
             primary
           />
 

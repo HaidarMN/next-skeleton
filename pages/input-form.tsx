@@ -25,15 +25,20 @@ const validationSchema = yup.object({
 const InputForm = () => {
   const {
     control,
-    register,
     handleSubmit,
     formState: { errors },
   } = useForm({
+    defaultValues: {
+      text: "text",
+      number: 123,
+      textarea: "textarea",
+      datepicker: "02-07-2024 11:26",
+      select: "vanilla",
+    },
     resolver: yupResolver(validationSchema),
   });
   const { setIsLoading: setIsLoading, setBreadcrumb: setBreadcrumb } =
     useLayoutStore();
-  const [value, setValue] = useState(null);
 
   // Variabel
   const options_list = [
@@ -41,6 +46,7 @@ const InputForm = () => {
     { value: "strawberry", label: "Strawberry" },
     { value: "vanilla", label: "Vanilla" },
   ];
+  const [value, setValue] = useState(null);
 
   // Function
   const submitData = async (data: object) => {
@@ -62,13 +68,13 @@ const InputForm = () => {
 
   return (
     <MainLayout title="Input Form">
-      {value && <span className="text-white">{value}</span>}
       <form
         onSubmit={handleSubmit(submitData)}
         className="grid grid-cols-2 gap-4 rounded-lg bg-slate-300 p-4"
       >
+        {/* {value} */}
         <InputText
-          register={register}
+          control={control}
           name="text"
           label="Text"
           placeholder="This is a text input"
@@ -76,7 +82,7 @@ const InputForm = () => {
           primary
         />
         <InputNumber
-          register={register}
+          control={control}
           name="number"
           label="Number"
           placeholder="This is a number input"
@@ -84,7 +90,7 @@ const InputForm = () => {
           primary
         />
         <InputTextarea
-          register={register}
+          control={control}
           name="textarea"
           label="Textarea"
           placeholder="This is a textarea input"
@@ -92,11 +98,12 @@ const InputForm = () => {
           primary
         />
         <InputDatepicker
-          register={register}
+          control={control}
           name="datepicker"
           label="Datepicker"
           placeholder="This is a datepicker input"
           error={errors.datepicker?.message}
+          passValue={(e) => setValue(e)}
           primary
           time
         />
@@ -107,7 +114,6 @@ const InputForm = () => {
           placeholder="This is a select input"
           error={errors.select?.message}
           option={options_list}
-          passValue={(e) => setValue(e)}
           primary
         />
         <button type="submit">APAPA</button>
