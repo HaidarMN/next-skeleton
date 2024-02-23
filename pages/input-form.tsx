@@ -15,6 +15,8 @@ import InputDatepicker from "@/components/global/input/Datepicker";
 import InputSelect from "@/components/global/input/Select";
 import InputRadio from "@/components/global/input/Radio";
 import InputCheckbox from "@/components/global/input/Checkbox";
+import InputFile from "@/components/global/input/File";
+import InputToggle from "@/components/global/input/Toggle";
 
 const validationSchema = yup.object({
   text: yup.string().required().label("Text"),
@@ -24,6 +26,7 @@ const validationSchema = yup.object({
   select: yup.array().required().label("Select"),
   radio: yup.string().required().label("Radio"),
   checkbox: yup.array().required().label("Checkbox"),
+  file: yup.object().required().label("File"),
 });
 
 const InputForm = () => {
@@ -137,6 +140,20 @@ const InputForm = () => {
           options={options_list}
           error={errors.checkbox?.message}
           passValue={(e) => console.log(e)}
+          primary
+        />
+        <InputFile
+          control={control}
+          name="file"
+          label="File"
+          error={errors.file?.message}
+          primary
+        />
+        <InputToggle
+          control={control}
+          name="toggle"
+          label="Toggle"
+          error={errors.file?.message}
           primary
         />
         <button type="submit">APAPA</button>
