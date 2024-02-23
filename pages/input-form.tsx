@@ -27,6 +27,7 @@ const validationSchema = yup.object({
   radio: yup.string().required().label("Radio"),
   checkbox: yup.array().required().label("Checkbox"),
   file: yup.object().required().label("File"),
+  toggle: yup.boolean().required().label("Toggle"),
 });
 
 const InputForm = () => {
@@ -43,6 +44,7 @@ const InputForm = () => {
       select: ["strawberry"],
       radio: "vanilla",
       checkbox: ["strawberry"],
+      toggle: true,
     },
     resolver: yupResolver(validationSchema),
   });
@@ -139,7 +141,6 @@ const InputForm = () => {
           label="Checkbox"
           options={options_list}
           error={errors.checkbox?.message}
-          passValue={(e) => console.log(e)}
           primary
         />
         <InputFile
@@ -153,7 +154,8 @@ const InputForm = () => {
           control={control}
           name="toggle"
           label="Toggle"
-          error={errors.file?.message}
+          error={errors.toggle?.message}
+          passValue={(e) => console.log(e)}
           primary
         />
         <button type="submit">APAPA</button>
