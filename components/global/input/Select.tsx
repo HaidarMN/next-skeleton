@@ -13,6 +13,7 @@ type props = {
   passValue?: (e: any) => void; // for pass value to parent
   option: Array<object>;
   control?: any;
+  multi?: boolean;
 };
 
 const InputSelect = ({
@@ -26,6 +27,7 @@ const InputSelect = ({
   passValue,
   option,
   control,
+  multi = false,
 }: props) => {
   var fieldProps = {} as any;
   if (control) {
@@ -68,12 +70,17 @@ const InputSelect = ({
           }}
           isDisabled={disabled}
           isClearable
+          isMulti={multi}
           onChange={(e: any) => {
+            const final_value = multi
+              ? e?.map((val: any) => val?.value)
+              : e?.value;
+
             if (typeof passValue === "function") {
-              passValue(e?.value);
+              passValue(final_value);
             }
             if (control) {
-              fieldProps?.onChange(e?.value || null);
+              fieldProps?.onChange(final_value || null);
             }
           }}
           value={option.find((val: any) => val.value === fieldProps?.value)}

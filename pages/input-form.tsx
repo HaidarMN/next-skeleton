@@ -19,7 +19,7 @@ const validationSchema = yup.object({
   number: yup.number().required().label("Number"),
   textarea: yup.string().required().label("Textarea"),
   datepicker: yup.string().required().label("Datepicker"),
-  select: yup.string().required().label("Select"),
+  select: yup.array().required().label("Select"),
 });
 
 const InputForm = () => {
@@ -33,7 +33,7 @@ const InputForm = () => {
       number: 123,
       textarea: "textarea",
       datepicker: "02-07-2024 11:26",
-      select: "vanilla",
+      // select: ["vanilla"],
     },
     resolver: yupResolver(validationSchema),
   });
@@ -114,6 +114,7 @@ const InputForm = () => {
           placeholder="This is a select input"
           error={errors.select?.message}
           option={options_list}
+          multi
           primary
         />
         <button type="submit">APAPA</button>
