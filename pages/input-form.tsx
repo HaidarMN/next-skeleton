@@ -14,6 +14,7 @@ import InputTextarea from "@/components/global/input/Textarea";
 import InputDatepicker from "@/components/global/input/Datepicker";
 import InputSelect from "@/components/global/input/Select";
 import InputRadio from "@/components/global/input/Radio";
+import InputCheckbox from "@/components/global/input/Checkbox";
 
 const validationSchema = yup.object({
   text: yup.string().required().label("Text"),
@@ -22,6 +23,7 @@ const validationSchema = yup.object({
   datepicker: yup.string().required().label("Datepicker"),
   select: yup.array().required().label("Select"),
   radio: yup.string().required().label("Radio"),
+  checkbox: yup.array().required().label("Checkbox"),
 });
 
 const InputForm = () => {
@@ -36,7 +38,8 @@ const InputForm = () => {
       textarea: "textarea",
       datepicker: "02-07-2024 11:26",
       select: ["strawberry"],
-      // radio: "vanilla",
+      radio: "vanilla",
+      checkbox: ["strawberry"],
     },
     resolver: yupResolver(validationSchema),
   });
@@ -106,7 +109,6 @@ const InputForm = () => {
           label="Datepicker"
           placeholder="This is a datepicker input"
           error={errors.datepicker?.message}
-          passValue={(e) => setValue(e)}
           primary
           time
         />
@@ -126,6 +128,15 @@ const InputForm = () => {
           label="Radio"
           options={options_list}
           error={errors.radio?.message}
+          primary
+        />
+        <InputCheckbox
+          control={control}
+          name="checkbox"
+          label="Checkbox"
+          options={options_list}
+          error={errors.checkbox?.message}
+          passValue={(e) => console.log(e)}
           primary
         />
         <button type="submit">APAPA</button>

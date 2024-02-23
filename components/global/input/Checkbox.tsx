@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useController } from "react-hook-form";
 
 type props = {
@@ -12,7 +12,7 @@ type props = {
   options: Array<{ value: string; label: string }>;
 };
 
-const InputRadio = ({
+const InputCheckbox = ({
   name,
   label,
   error,
@@ -31,6 +31,8 @@ const InputRadio = ({
     fieldProps = { ...field };
   }
 
+  var value: Array<any> = fieldProps?.value || [];
+
   return (
     <div className="flex flex-col items-start gap-1">
       <span className="flex flex-row items-start gap-1 text-sm text-slate-950">
@@ -43,16 +45,20 @@ const InputRadio = ({
             <input
               {...fieldProps}
               id={`${name}${index}`}
-              type="radio"
+              type="checkbox"
               value={val.value}
               className={`h-5 w-5 rounded-lg border focus:!ring-2 ${disabled ? "cursor-not-allowed bg-gray-300" : "cursor-pointer"} ${error ? "border-red-600 text-red-600 focus:!ring-red-600" : "border-slate-950 text-slate-950 focus:!ring-slate-950"}`}
               disabled={disabled}
               onChange={(e: any) => {
+                const updatedValue = value.includes(e?.target?.value)
+                  ? value.filter((item) => item !== e?.target?.value)
+                  : [...value, e?.target?.value];
+
                 if (typeof passValue === "function") {
-                  passValue(e?.target?.value);
+                  passValue(updatedValue);
                 }
                 if (control) {
-                  fieldProps?.onChange(e?.target?.value);
+                  fieldProps?.onChange(updatedValue);
                 }
               }}
               checked={fieldProps?.value?.includes(val.value)}
@@ -71,4 +77,4 @@ const InputRadio = ({
   );
 };
 
-export default InputRadio;
+export default InputCheckbox;
