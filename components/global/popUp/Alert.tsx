@@ -28,6 +28,30 @@ const Alert = () => {
       setTimer((prevTimer) => prevTimer - 0.5);
     }, 25);
   };
+  const getIcon = () => {
+    switch (alert_option.type) {
+      case "warning":
+        return <IoWarning className="text-4xl" />;
+      case "danger":
+        return <IoCloseCircle className="text-4xl" />;
+      case "success":
+        return <IoCheckmarkCircle className="text-4xl" />;
+      default:
+        return <IoInformationCircle className="text-4xl" />;
+    }
+  };
+  const getColor = () => {
+    switch (alert_option.type) {
+      case "warning":
+        return "yellow";
+      case "danger":
+        return "red";
+      case "success":
+        return "green";
+      default:
+        return "blue";
+    }
+  };
 
   useEffect(() => {
     const interval = startTimer();
@@ -44,29 +68,11 @@ const Alert = () => {
 
   return (
     <div
-      className={`fixed right-4 top-4 flex w-80 flex-col rounded
-        ${
-          alert_option.type === "warning"
-            ? "bg-yellow-50 text-yellow-500"
-            : alert_option.type === "danger"
-              ? "bg-red-50 text-red-500"
-              : alert_option.type === "success"
-                ? "bg-green-50 text-green-500"
-                : "bg-blue-50 text-blue-500"
-        }
-      `}
+      className={`fixed right-4 top-4 flex w-80 flex-col rounded bg-${getColor()}-50 text-${getColor()}-500 animate__animated animate__slideInRight animate__faster`}
     >
       <div className="flex flex-row items-center justify-between gap-2 px-4 py-2">
         <div className="flex flex-row items-center gap-4">
-          {alert_option.type === "warning" ? (
-            <IoWarning className="text-4xl" />
-          ) : alert_option.type === "danger" ? (
-            <IoCloseCircle className="text-4xl" />
-          ) : alert_option.type === "success" ? (
-            <IoCheckmarkCircle className="text-4xl" />
-          ) : (
-            <IoInformationCircle className="text-4xl" />
-          )}
+          {getIcon()}
           <div className="flex h-full flex-col justify-between gap-2">
             <span className="font-bold">{alert_option.title}</span>
             <span className="text-xs">{alert_option.message}</span>
@@ -75,15 +81,7 @@ const Alert = () => {
         <IoClose className="cursor-pointer text-2xl" onClick={closeAlert} />
       </div>
       <div
-        className={`rounded-b p-0.5 transition-all ${
-          alert_option.type === "warning"
-            ? "bg-yellow-500"
-            : alert_option.type === "danger"
-              ? "bg-red-500"
-              : alert_option.type === "success"
-                ? "bg-green-500"
-                : "bg-blue-500"
-        }`}
+        className={`rounded-b p-0.5 transition-all bg-${getColor()}-500`}
         style={{ width: `${timer}%` }}
       ></div>
     </div>

@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app";
 import "../src/styles/globals.css";
+import "animate.css";
 import { useLayoutStore } from "@/stores/layout";
 import { useAuthStore } from "@/stores/auth";
 import { useEffect } from "react";

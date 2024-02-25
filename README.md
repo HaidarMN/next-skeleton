@@ -29,7 +29,8 @@ pnpm dev
 ## Packages List
 
 - :globe_with_meridians: [Axios](https://axios-http.com/) for HTTP request
-- :art: [Tailwind](https://tailwindcss.com/) for CSS framework
+- :art: [TailwindCSS](https://tailwindcss.com/) for CSS framework
+- :star2: [Animate.css](https://animate.style/) for CSS animation
 - :open_file_folder: [Zustand](https://zustand-demo.pmnd.rs/) for state management
 - :trollface: [React Icons](https://react-icons.github.io/react-icons/) for icons
 - :memo: [React Hook Form](https://react-hook-form.com/) for validation form
