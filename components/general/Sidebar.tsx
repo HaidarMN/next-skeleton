@@ -14,12 +14,12 @@ const Sidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const { user, removeAuth: removeAuth } = useAuthStore();
-  const { setBreadcrumb: setBreadcrumb } = useLayoutStore();
 
   // Variabel
   const list_menu = [
     { label: "Dashboard", path: "/" },
     { label: "Input Form", path: "/input-form" },
+    { label: "Pop Up", path: "/pop-up" },
   ];
 
   // Function
@@ -34,10 +34,6 @@ const Sidebar = () => {
     removeAuth();
     router.push("/auth/login");
   };
-
-  useEffect(() => {
-    setBreadcrumb(["Dashboard"]);
-  }, []);
 
   return (
     <>
