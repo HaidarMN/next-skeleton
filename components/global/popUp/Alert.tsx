@@ -43,13 +43,25 @@ const Alert = () => {
   const getColor = () => {
     switch (alert_option.type) {
       case "warning":
-        return "yellow";
+        return "bg-yellow-50 text-yellow-500";
       case "danger":
-        return "red";
+        return "bg-red-50 text-red-500";
       case "success":
-        return "green";
+        return "bg-green-50 text-green-500";
       default:
-        return "blue";
+        return "bg-blue-50 text-blue-500";
+    }
+  };
+  const getColorProgress = () => {
+    switch (alert_option.type) {
+      case "warning":
+        return "bg-yellow-500";
+      case "danger":
+        return "bg-red-500";
+      case "success":
+        return "bg-green-500";
+      default:
+        return "bg-blue-500";
     }
   };
 
@@ -68,7 +80,7 @@ const Alert = () => {
 
   return (
     <div
-      className={`fixed right-4 top-4 flex w-80 flex-col rounded bg-${getColor()}-50 text-${getColor()}-500 animate__animated animate__slideInRight animate__faster`}
+      className={`fixed right-4 top-4 flex w-80 flex-col rounded ${getColor()} animate__animated animate__slideInRight animate__faster`}
     >
       <div className="flex flex-row items-center justify-between gap-2 px-4 py-2">
         <div className="flex flex-row items-center gap-4">
@@ -81,7 +93,7 @@ const Alert = () => {
         <IoClose className="cursor-pointer text-2xl" onClick={closeAlert} />
       </div>
       <div
-        className={`rounded-b p-0.5 transition-all bg-${getColor()}-500`}
+        className={`rounded-b p-0.5 transition-all ${getColorProgress()}`}
         style={{ width: `${timer}%` }}
       ></div>
     </div>

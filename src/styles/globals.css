@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply overflow-x-auto overflow-y-hidden bg-slate-950;
+    @apply overflow-x-hidden overflow-y-auto bg-slate-950;
   }
 
   input {

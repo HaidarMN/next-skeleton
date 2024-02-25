@@ -81,7 +81,7 @@ const InputForm = () => {
     <MainLayout title="Input Form">
       <form
         onSubmit={handleSubmit(submitData)}
-        className="grid grid-cols-2 gap-4 rounded-lg bg-slate-300 p-4"
+        className="grid grid-cols-1 gap-4 rounded-lg bg-slate-300 p-4 md:grid-cols-2"
       >
         {/* {value} */}
         <InputText

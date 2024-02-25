@@ -47,7 +47,7 @@ const InputForm = () => {
 
   return (
     <MainLayout title="Pop Up">
-      <div className="grid grid-cols-2 gap-4 rounded-lg bg-slate-300 p-4">
+      <div className="grid grid-cols-1 gap-4 rounded-lg bg-slate-300 p-4 md:grid-cols-2">
         <button
           onClick={warningAlert}
           className="rounded border border-yellow-500 px-4 py-2 font-medium text-yellow-500 hover:bg-yellow-500 hover:text-white"
