@@ -5,6 +5,7 @@ import {
   IoWarning,
   IoCloseCircle,
   IoCheckmarkCircle,
+  IoInformationCircle,
 } from "react-icons/io5";
 
 const Alert = () => {
@@ -49,7 +50,9 @@ const Alert = () => {
             ? "bg-yellow-50 text-yellow-500"
             : alert_option.type === "danger"
               ? "bg-red-50 text-red-500"
-              : "bg-green-50 text-green-500"
+              : alert_option.type === "success"
+                ? "bg-green-50 text-green-500"
+                : "bg-blue-50 text-blue-500"
         }
       `}
     >
@@ -59,8 +62,10 @@ const Alert = () => {
             <IoWarning className="text-4xl" />
           ) : alert_option.type === "danger" ? (
             <IoCloseCircle className="text-4xl" />
-          ) : (
+          ) : alert_option.type === "success" ? (
             <IoCheckmarkCircle className="text-4xl" />
+          ) : (
+            <IoInformationCircle className="text-4xl" />
           )}
           <div className="flex h-full flex-col justify-between gap-2">
             <span className="font-bold">{alert_option.title}</span>
@@ -75,7 +80,9 @@ const Alert = () => {
             ? "bg-yellow-500"
             : alert_option.type === "danger"
               ? "bg-red-500"
-              : "bg-green-500"
+              : alert_option.type === "success"
+                ? "bg-green-500"
+                : "bg-blue-500"
         }`}
         style={{ width: `${timer}%` }}
       ></div>

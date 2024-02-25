@@ -32,6 +32,14 @@ const InputForm = () => {
       show: true,
     });
   };
+  const infoAlert = () => {
+    setAlert({
+      type: "info",
+      title: "Info",
+      message: "This is an info alert",
+      show: true,
+    });
+  };
 
   useEffect(() => {
     setBreadcrumb(["Pop Up"]);
@@ -42,21 +50,27 @@ const InputForm = () => {
       <div className="grid grid-cols-2 gap-4 rounded-lg bg-slate-300 p-4">
         <button
           onClick={warningAlert}
-          className="rounded border border-yellow-600 px-4 py-2 font-medium text-yellow-600 hover:bg-yellow-600 hover:text-white"
+          className="rounded border border-yellow-500 px-4 py-2 font-medium text-yellow-500 hover:bg-yellow-500 hover:text-white"
         >
           Warning
         </button>
         <button
           onClick={dangerAlert}
-          className="rounded border border-red-600 px-4 py-2 font-medium text-red-600 hover:bg-red-600 hover:text-white"
+          className="rounded border border-red-500 px-4 py-2 font-medium text-red-500 hover:bg-red-500 hover:text-white"
         >
           Danger
         </button>
         <button
           onClick={successAlert}
-          className="rounded border border-green-600 px-4 py-2 font-medium text-green-600 hover:bg-green-600 hover:text-white"
+          className="rounded border border-green-500 px-4 py-2 font-medium text-green-500 hover:bg-green-500 hover:text-white"
         >
           Success
+        </button>
+        <button
+          onClick={infoAlert}
+          className="rounded border border-blue-500 px-4 py-2 font-medium text-blue-500 hover:bg-blue-500 hover:text-white"
+        >
+          Info
         </button>
       </div>
     </MainLayout>
