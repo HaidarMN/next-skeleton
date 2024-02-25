@@ -1,3 +1,4 @@
+import Modal from "@/components/global/popUp/Modal";
 import MainLayout from "@/layouts/MainLayout";
 
 // Stores
@@ -72,6 +73,48 @@ const InputForm = () => {
         >
           Info
         </button>
+        <Modal
+          modalTitle="Modal Title"
+          buttonTrigger={
+            <button className="rounded border border-slate-950 px-4 py-2 font-medium text-slate-950 hover:bg-slate-950 hover:text-white">
+              Modal
+            </button>
+          }
+          buttonClose={
+            <button className="rounded border border-slate-950 px-4 py-2 font-medium text-slate-950 hover:bg-slate-950 hover:text-white">
+              Close
+            </button>
+          }
+          buttonAction={
+            <button className="rounded border border-slate-950 px-4 py-2 font-medium text-slate-950 hover:bg-slate-950 hover:text-white">
+              Action
+            </button>
+          }
+          onButtonAction={successAlert}
+        >
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+          <p>This is modal content</p>
+        </Modal>
       </div>
     </MainLayout>
   );

@@ -80,7 +80,7 @@ const Alert = () => {
 
   return (
     <div
-      className={`fixed right-4 top-4 flex w-80 flex-col rounded ${getColor()} animate__animated animate__slideInRight animate__faster`}
+      className={`fixed right-4 top-4 flex w-96 flex-col rounded ${getColor()} animate__animated animate__slideInRight animate__faster`}
     >
       <div className="flex flex-row items-center justify-between gap-2 px-4 py-2">
         <div className="flex flex-row items-center gap-4">
