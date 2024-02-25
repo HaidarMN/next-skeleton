@@ -82,3 +82,11 @@ const Button = ({
 };
 
 export default Button;
+
+
+/*
+- button dibuat beda file
+- handling hover, focus, border, disable, fill,
+
+
+*/ 
