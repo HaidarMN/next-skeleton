@@ -65,7 +65,7 @@ import { MdOutlineEmail } from "react-icons/md"; // Icons
 | error       | String          |
 | primary     | Boolean         |
 | disabled    | Boolean         |
-| register    | React Hook Form |
-| passValue   | any(function)   |
+| control     | React Hook Form |
+| passValue   | function        |
 
 **NB**: Props "name" is a required props
