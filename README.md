@@ -29,6 +29,7 @@ pnpm dev
 ## Packages List
 
 - :globe_with_meridians: [Axios](https://axios-http.com/) for HTTP request
+- :cookie: [JS Cookie](https://www.npmjs.com/package/js-cookie) for setting up cookie
 - :art: [TailwindCSS](https://tailwindcss.com/) for CSS framework
 - :star2: [Animate.css](https://animate.style/) for CSS animation
 - :open_file_folder: [Zustand](https://zustand-demo.pmnd.rs/) for state management
@@ -37,6 +38,7 @@ pnpm dev
 - :white_check_mark: [Yup](https://www.npmjs.com/package/yup) for validation schema
 - :calendar: [Air Datepicker](https://air-datepicker.com/) for datepicker
 - :spiral_notepad: [React Select](https://react-select.com/home) for input select
+- :bar_chart: [Apexcharts](https://apexcharts.com/) for chart components
 
 ## How To Use A Component
 
