@@ -13,7 +13,7 @@ type props = {
   primary?: boolean | false;
   disabled?: boolean | false;
   control?: any;
-  passValue?: (e: any) => void; // for pass value to parent
+  passValue?: (e: any) => void; 
   dateFormat?: string;
   time?: boolean;
 };

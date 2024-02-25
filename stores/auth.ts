@@ -22,7 +22,6 @@ export const useAuthStore = create<AuthStore & AuthStoreFunc>((set) => ({
   setAuth: (val: any) => {
     Cookies.set("user", JSON.stringify(val));
     Cookies.set("token", val.token);
-
     set(() => ({
       user: val,
       token: val.token,
