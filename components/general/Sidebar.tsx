@@ -17,17 +17,11 @@ const Sidebar = () => {
 
   // Variabel
   const list_menu = [
-<<<<<<< Updated upstream
-    { label: "Dashboard", path: "/", icon: <IoHome /> },
-    { label: "Input Form", path: "/input-form", icon: <IoLibrary /> },
-    { label: "Pop Up", path: "/pop-up", icon: <IoLogoBuffer /> },
-=======
     { label: "Dashboard", path: "/" },
     { label: "Input Form", path: "/input-form" },
     { label: "Pop Up", path: "/pop-up" },
     { label: "Table", path: "/table" },
     { label: "Button", path: "/button" },
->>>>>>> Stashed changes
   ];
 
   // Function
