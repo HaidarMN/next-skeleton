@@ -22,6 +22,7 @@ const Sidebar = () => {
     { label: "Pop Up", path: "/pop-up" },
     { label: "Table", path: "/table" },
     { label: "Button", path: "/button" },
+    { label: "Stepper", path: "/stepper-form" },
   ];
 
   // Function

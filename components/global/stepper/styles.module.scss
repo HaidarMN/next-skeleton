@@ -1,0 +1,11 @@
+.stepNumber {
+  @apply relative;
+  &:not(:last-child) {
+    &::before {
+      @apply absolute left-[100%]  top-[50%] z-[-2] h-[2px] w-full bg-slate-50 content-[''];
+      &.isActive {
+        @apply bg-teal-600;
+      }
+    }
+  }
+}
