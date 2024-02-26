@@ -3,7 +3,7 @@ import { create } from "zustand";
 import Cookies from "js-cookie";
 
 type AuthStore = {
-  user: object;
+  user: object | any;
   token: string;
 };
 

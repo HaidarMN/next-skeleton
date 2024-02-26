@@ -13,7 +13,7 @@ import { MdOutlineEmail } from "react-icons/md";
 // Components
 import InputText from "@/components/global/input/Text";
 import InputPassword from "@/components/global/input/Password";
-import api from "@/src/api/axios";
+import api from "@/src/plugins/axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import InputCaptcha from "@/components/global/input/Captcha";
