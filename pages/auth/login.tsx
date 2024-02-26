@@ -16,6 +16,7 @@ import InputPassword from "@/components/global/input/Password";
 import api from "@/src/api/axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import InputCaptcha from "@/components/global/input/Captcha";
 
 const validationSchema = yup.object({
   username: yup.string().required().label("Username"),
@@ -38,20 +39,39 @@ const Login = () => {
   // Variabel
   const router = useRouter();
   const { setAuth: setAuth } = useAuthStore();
-  const { setIsLoading: setIsLoading } = useLayoutStore();
+  const {
+    setIsLoading: setIsLoading,
+    setAlert: setAlert,
+    errorHandler: errorHandler,
+  } = useLayoutStore();
   const [value, setValue] = useState("");
+  const [is_captcha_match, setIsCaptchaMatch] = useState(false);
 
   // Funtion
   const submitData = async (data: object) => {
     try {
+      if (!is_captcha_match) {
+        return setAlert({
+          type: "warning",
+          title: "Captcha Not Match",
+          message: "Please check if there is a typo",
+          show: true,
+        });
+      }
       setIsLoading(true);
       const response = await api.post("/auth/login", data);
-      if (response.status === 200) {
+      if (response?.status === 200) {
         setAuth(response.data);
         router.push("/");
+        setAlert({
+          type: "success",
+          title: "Login Success",
+          message: "Welcome aboard! You have successfully logged in",
+          show: true,
+        });
       }
     } catch (error) {
-      console.error(error);
+      errorHandler(error);
     } finally {
       setIsLoading(false);
     }
@@ -84,6 +104,7 @@ const Login = () => {
             passValue={(e) => setValue(e)}
             primary
           />
+          <InputCaptcha passValue={(e) => setIsCaptchaMatch(e)} />
 
           <button
             type="submit"
