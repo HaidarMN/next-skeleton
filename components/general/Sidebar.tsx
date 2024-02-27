@@ -23,6 +23,7 @@ const Sidebar = () => {
     { label: "Table", path: "/table", icon: <IoLogoBuffer /> },
     { label: "Button", path: "/button", icon: <IoLogoBuffer /> },
     { label: "Stepper", path: "/stepper-form", icon: <IoLogoBuffer /> },
+    { label: "Progress Bar", path: "/progress-bar",  icon: <IoLogoBuffer /> },
   ];
 
   // Function
