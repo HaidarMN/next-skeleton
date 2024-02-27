@@ -1,4 +1,3 @@
-// import { cookies } from "next/headers";
 import { create } from "zustand";
 import Cookies from "js-cookie";
 

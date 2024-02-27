@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import axios from "axios";
 import getConfig from "next/config";
 import { useRouter } from "next/navigation";
@@ -11,7 +12,7 @@ const createAxiosInstance = () => {
 
   instance.interceptors.request.use(
     (config) => {
-      const token = localStorage.getItem("token");
+      const token = Cookies.get("token");
       if (token) {
         config.headers["Authorization"] = `Bearer ${token}`;
       }
@@ -25,11 +26,10 @@ const createAxiosInstance = () => {
     (response) => response,
     (error) => {
       if (error.response.status === 401) {
-        console.log("Unathorized");
         useRouter().push("/");
       } else if (error.response.status === 403) {
-        localStorage.removeItem("user");
-        localStorage.removeItem("token");
+        Cookies.remove("user");
+        Cookies.remove("token");
         useRouter().push("/auth/login");
       }
     },
