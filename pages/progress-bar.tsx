@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MainLayout from "@/layouts/MainLayout";
 import Bar from "@/components/global/bar";
-import Button from "@/components/global/button";
+import Button from "@/components/global/Button";
 
 function ProgressBar() {
   const [progress, setProgress] = useState(0);

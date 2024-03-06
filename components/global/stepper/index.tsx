@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from "react";
 import Numbering from "./numbering/numbering";
 import MainContent from "./mainContent/mainContent";
-import Button from "../button";
+import Button from "../Button";
 import styles from "./styles.module.scss";
 type props = {
   steps: Array<object>;
