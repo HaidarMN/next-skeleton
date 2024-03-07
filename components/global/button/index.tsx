@@ -1,6 +1,7 @@
 import React from "react";
 import { ButtonProps } from "./Button.props";
 import { getButtonClasses } from "./Button.utils";
+import Loader from "@/components/global/loader/Small";
 
 const Button: React.FC<ButtonProps> = ({
   text,
@@ -12,15 +13,18 @@ const Button: React.FC<ButtonProps> = ({
   type = "button",
   customStyle = "",
   onClick,
+  disable = false,
+  loading = false,
 }) => {
   return (
     <button
+      disabled={disable || loading}
       onClick={onClick}
       type={type}
       className={`${getButtonClasses({ size, variant, color })} ${customStyle} ${block ? "w-full" : ""}`}
     >
       {Icon && <Icon className="button-icon" />}
-      {text}
+      {loading ? <Loader /> : text}
     </button>
   );
 };

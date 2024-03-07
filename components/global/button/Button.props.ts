@@ -17,4 +17,6 @@ export interface ButtonProps {
   type?: "submit" | "button";
   customStyle?: string;
   onClick?: () => void;
+  disable?: boolean;
+  loading?: boolean;
 }

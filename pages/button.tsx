@@ -8,18 +8,20 @@ const Button = () => {
   const { setIsLoading: setIsLoading, setBreadcrumb: setBreadcrumb } =
     useLayoutStore();
 
+  const [number, setNumber] = useState(0);
+
   useEffect(() => {
     setBreadcrumb(["Button Components"]);
   }, []);
 
-  const testing = () => {
-    console.log("Hello World!");
+  const incrementNumber = () => {
+    setNumber((currentNumber) => currentNumber + 1);
   };
 
   return (
     <MainLayout title="Button Components">
       <div className="flex flex-col gap-2">
-        <h2 className="text-secondary-300 text-xl font-bold">Colors</h2>
+        <h2 className="text-xl font-bold text-secondary-300">Colors</h2>
         <div className="flex flex-row gap-4">
           <ButtonComp text="primary" size="lg" color="primary" />
           <ButtonComp text="secondary" size="lg" color="secondary" />
@@ -31,7 +33,7 @@ const Button = () => {
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <h2 className="text-secondary-300 text-xl font-bold">Variants</h2>
+        <h2 className="text-xl font-bold text-secondary-300">Variants</h2>
         <div className="flex flex-row gap-4">
           <ButtonComp
             text="filled"
@@ -51,7 +53,7 @@ const Button = () => {
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <h2 className="text-secondary-300 text-xl font-bold">Sizes</h2>
+        <h2 className="text-xl font-bold text-secondary-300">Sizes</h2>
         <div className="flex flex-row gap-4">
           <ButtonComp text="sm" size="sm" />
           <ButtonComp text="md" size="md" />
@@ -59,6 +61,22 @@ const Button = () => {
           <ButtonComp text="xl" size="xl" />
           <ButtonComp text="2xl" size="2xl" />
         </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <h2 className="text-xl font-bold text-secondary-300">
+          State of Buttons
+        </h2>
+        <div className="flex flex-row gap-4">
+          <ButtonComp text="disable" size="lg" disable />
+          <ButtonComp text="on click" size="lg" onClick={incrementNumber} />
+          <ButtonComp text="loading" size="lg" loading />
+          <ButtonComp text="submit" size="lg" type="submit" />
+        </div>
+        {number > 0 && (
+          <p className="text-lg font-semibold text-secondary-300">
+            Button clicked {number}
+          </p>
+        )}
       </div>
     </MainLayout>
   );

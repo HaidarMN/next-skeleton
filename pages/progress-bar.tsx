@@ -36,7 +36,7 @@ function ProgressBar() {
             onClick={minProgress}
             text="-"
             size="lg"
-            variant="primary"
+            color="primary"
             type="button"
             customStyle="w-1/2"
           />
@@ -44,7 +44,7 @@ function ProgressBar() {
             onClick={plusProgress}
             text="+"
             size="lg"
-            variant="primary"
+            color="primary"
             type="button"
             customStyle="w-1/2"
           />

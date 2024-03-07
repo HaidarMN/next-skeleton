@@ -47,11 +47,10 @@ export const variantClasses: Record<
   string | ((colorClass: Color) => string)
 > = {
   filled: "text-slate-900",
-  ghost:
-    "bg-opacity-50 ring ring-inset hover:ring-3 ring-${color}-600  hover:ring-${color}-700",
+  ghost: (color) => `ring ring-${color}-100  hover:ring-${color}-200`,
   ring: (color) =>
     `ring ring-${color}-600 hover:ring-${color}-700 hover:ring-3 bg-transparant`,
   soft: "bg-opacity-50 hover:bg-opacity-70",
   gradient: (color) =>
-    `bg-gradient-to-r from-${color}-400 via-${color}-500 to-${color}-600 hover:from-${color}-300 hover:via-${color}-400 hover:to-${color}-500`,
+    `bg-gradient-to-r from-${color}-400 via-${color}-500 to-${color}-900 hover:from-${color}-300 hover:via-${color}-400 hover:to-${color}-500`,
 };
